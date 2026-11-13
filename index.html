@@ -6,19 +6,31 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="referrer" content="no-referrer">
   <title>Find Your EL AL Ticket</title>
+  
+  <!-- הוספת פונט מודרני ונקי -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
 :root {
-  --navy: #0b1226;
-  --indigo: #2a1d8f;
-  --indigo-dark: #1f1570;
-  --ink: #141a33;
-  --muted: #5b6380;
-  --line: #dfe3f0;
-  --bg: #f4f6fc;
-  --card: #ffffff;
-  --error: #b3261e;
-  --ok: #1b6e3c;
-  --radius: 16px;
+  /* צבעים מעודכנים ויוקרתיים יותר */
+  --navy: #0A1128;
+  --indigo: #1A365D;
+  --indigo-dark: #10233F;
+  --indigo-light: #2B6CB0;
+  --ink: #2D3748;
+  --muted: #718096;
+  --line: #E2E8F0;
+  --bg-top: #F0F4F8;
+  --bg-bottom: #E2E8F0;
+  --card: #FFFFFF;
+  --error: #E53E3E;
+  --error-bg: #FFF5F5;
+  --ok: #38A169;
+  --radius: 20px;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
 }
 
 * { box-sizing: border-box; }
@@ -27,134 +39,255 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 17px;
-  line-height: 1.5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--ink);
-  background: linear-gradient(180deg, #e9edfb 0, var(--bg) 320px) no-repeat var(--bg);
+  background: linear-gradient(135deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .top, main, footer {
+  width: 100%;
   max-width: 480px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 20px;
 }
 
-.top { padding-top: 28px; text-align: center; }
+.top { 
+  padding-top: 40px; 
+  text-align: center; 
+}
 
 .logos {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 124px;
-  height: 84px;
-  border-radius: 14px;
+  width: 110px;
+  height: 80px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(20, 26, 51, .12);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease;
 }
+.logo:hover { transform: translateY(-2px); }
 .logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; }
 .logo-dark { background: var(--navy); }
 .logo-light { background: #fff; }
 
 h1 {
-  margin: 0 0 6px;
+  margin: 0 0 10px;
   font-size: 28px;
+  font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -.01em;
-  color: var(--indigo-dark);
+  letter-spacing: -0.02em;
+  color: var(--navy);
 }
 
-.lead { margin: 0 0 20px; color: var(--muted); }
+.lead { 
+  margin: 0 0 28px; 
+  color: var(--muted); 
+  font-size: 16px;
+}
 
 .card {
   background: var(--card);
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255,255,255,0.8);
   border-radius: var(--radius);
-  padding: 22px 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 10px 30px rgba(31, 21, 112, .08);
+  padding: 32px 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(10px);
 }
 
 label {
   display: block;
   font-weight: 600;
-  font-size: 15px;
-  margin: 0 0 6px;
+  font-size: 14px;
+  margin: 0 0 8px;
+  color: var(--navy);
 }
 
 input {
   display: block;
   width: 100%;
   font: inherit;
-  color: inherit;
-  padding: 13px 14px;
-  margin-bottom: 16px;
-  border: 1.5px solid #c5cbe0;
+  color: var(--ink);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 1.5px solid var(--line);
   border-radius: 12px;
-  background: #fff;
+  background: #FAFCFF;
+  transition: all 0.2s ease;
 }
 input:focus-visible, .btn:focus-visible {
-  outline: 3px solid rgba(42, 29, 143, .35);
-  outline-offset: 2px;
-  border-color: var(--indigo);
+  outline: none;
+  border-color: var(--indigo-light);
+  box-shadow: 0 0 0 4px rgba(43, 108, 176, 0.15);
+  background: #fff;
 }
+input::placeholder { color: #A0AEC0; }
 
-.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .04em; }
+.mono { 
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; 
+  letter-spacing: 0.05em; 
+}
 
 .btn {
   display: block;
   width: 100%;
   font: inherit;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
   text-decoration: none;
-  padding: 14px 16px;
+  padding: 16px;
   border-radius: 12px;
   border: 1.5px solid transparent;
   cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 16px;
 }
-.btn-primary { background: var(--indigo); color: #fff; }
-.btn-primary:hover { background: var(--indigo-dark); }
-.btn-primary[disabled] { opacity: .6; cursor: progress; }
-.btn-secondary { background: #fff; color: var(--indigo); border-color: var(--indigo); }
-.btn-secondary:hover { background: #f1f0fb; }
-.btn-link { background: none; color: var(--muted); font-weight: 600; text-decoration: underline; margin-top: 8px; }
+.btn:active { transform: scale(0.98); }
+.btn-primary { 
+  background: var(--indigo); 
+  color: #fff; 
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.2);
+}
+.btn-primary:hover { 
+  background: var(--indigo-dark); 
+  box-shadow: 0 6px 16px rgba(26, 54, 93, 0.3);
+}
+.btn-primary[disabled] { opacity: 0.65; cursor: not-allowed; box-shadow: none; }
+.btn-secondary { 
+  background: #fff; 
+  color: var(--indigo); 
+  border-color: var(--line); 
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover { 
+  background: #F7FAFC; 
+  border-color: var(--indigo-light); 
+  color: var(--indigo-light);
+}
+.btn-link { 
+  background: none; 
+  color: var(--muted); 
+  font-weight: 500; 
+  text-decoration: underline; 
+  margin-top: 12px; 
+}
+.btn-link:hover { color: var(--navy); }
 
 .error {
-  margin: 0 0 14px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  background: #fdecea;
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--error-bg);
+  border: 1px solid #FED7D7;
   color: var(--error);
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
 }
 
-.result h2 { margin: 0 0 12px; font-size: 20px; color: var(--indigo-dark); }
+.result { position: relative; }
+.result::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: var(--indigo);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.result h2 { 
+  margin: 0 0 20px; 
+  font-size: 22px; 
+  color: var(--navy);
+  font-weight: 700;
+}
 
-dl { margin: 0 0 16px; }
-dl > div { padding: 10px 0; border-bottom: 1px solid var(--line); }
+dl { margin: 0 0 24px; }
+dl > div { 
+  padding: 14px 0; 
+  border-bottom: 1px dashed var(--line); 
+  display: flex;
+  flex-direction: column;
+}
 dl > div:last-child { border-bottom: 0; }
-dt { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-dd { margin: 2px 0 0; font-size: 18px; overflow-wrap: anywhere; }
-dd.strong { font-weight: 700; }
-dd.ticket { font-size: 24px; font-weight: 700; color: var(--indigo-dark); }
+dt { 
+  font-size: 12px; 
+  text-transform: uppercase; 
+  letter-spacing: 0.08em; 
+  color: var(--muted); 
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+dd { 
+  margin: 0; 
+  font-size: 18px; 
+  overflow-wrap: anywhere; 
+  color: var(--ink);
+}
+dd.strong { font-weight: 700; color: var(--navy); }
+dd.ticket { 
+  font-size: 24px; 
+  font-weight: 700; 
+  color: var(--indigo);
+  background: #F7FAFC;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-top: 8px;
+  text-align: center;
+  border: 1px solid var(--line);
+}
 
-hr { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
+hr { 
+  border: 0; 
+  border-top: 2px dashed var(--line); 
+  margin: 28px -24px 24px -24px; 
+}
 
-.instruction { margin: 0 0 14px; font-weight: 600; }
-.hint { margin: 10px 0 0; font-size: 14px; color: var(--muted); text-align: center; }
-#copied { color: var(--ok); font-weight: 600; }
+.instruction { 
+  margin: 0 0 16px; 
+  font-weight: 500; 
+  font-size: 15px;
+  color: var(--ink);
+}
+.hint { 
+  margin: 12px 0 0; 
+  font-size: 13px; 
+  color: var(--muted); 
+  text-align: center; 
+  line-height: 1.4;
+}
+#copied { 
+  color: var(--ok); 
+  font-weight: 500; 
+  background: #F0FFF4;
+  border: 1px solid #C6F6D5;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
 
-footer { padding-bottom: 32px; text-align: center; font-size: 13px; color: var(--muted); }
+footer { 
+  margin-top: auto;
+  padding-bottom: 40px; 
+  text-align: center; 
+  font-size: 13px; 
+  color: var(--muted); 
+}
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
@@ -180,7 +313,7 @@ footer { padding-bottom: 32px; text-align: center; font-size: 13px; color: var(-
       <h2 id="lookup-title" class="sr-only">Ticket lookup</h2>
       <form id="lookup-form" novalidate autocomplete="off">
         <label for="name">First or last name</label>
-        <input id="name" name="traveler-name" type="text" required maxlength="120"
+        <input id="name" name="traveler-name" type="text" required maxlength="120" placeholder="e.g. John Doe"
                autocomplete="off" autocapitalize="words" autocorrect="off" spellcheck="false">
         <p id="error" class="error" role="alert" hidden></p>
         <button id="submit" type="submit" class="btn btn-primary">Find my ticket</button>
